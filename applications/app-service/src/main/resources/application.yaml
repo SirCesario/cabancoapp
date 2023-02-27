@@ -11,6 +11,9 @@ spring:
       path: "/h2"
   profiles:
     include: null
+  data:
+    mongodb:
+      uri: "mongodb+srv://admindb:L4dIAnsdqSuqWxAz@cluster0.hrhqtf6.mongodb.net/test"
 management:
   endpoints:
     web:

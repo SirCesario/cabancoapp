@@ -3,8 +3,6 @@ package co.com.appbank.usecase;
 
 import co.com.appbank.model.Cliente;
 import co.com.appbank.model.command.ClienteCreadoCommand;
-import co.com.appbank.model.gateways.DomainEventRepository;
-import co.com.appbank.model.gateways.EventBus;
 import co.com.appbank.model.generic.DomainEvent;
 import co.com.appbank.model.generic.UseCaseForCommand;
 import co.com.appbank.model.values.*;

@@ -1,13 +1,9 @@
 package co.com.appbank.usecase;
 
 
-import co.com.appbank.model.Cliente;
 import co.com.appbank.model.command.AgregarCuentaClienteCommand;
-import co.com.appbank.model.gateways.DomainEventRepository;
-import co.com.appbank.model.gateways.EventBus;
 import co.com.appbank.model.generic.DomainEvent;
 import co.com.appbank.model.generic.UseCaseForCommand;
-import co.com.appbank.model.values.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

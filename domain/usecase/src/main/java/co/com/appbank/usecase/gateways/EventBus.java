@@ -1,4 +1,4 @@
-package co.com.appbank.model.gateways;
+package co.com.appbank.usecase.gateways;
 
 
 import co.com.appbank.model.generic.DomainEvent;
