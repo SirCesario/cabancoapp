@@ -1,12 +1,10 @@
-package co.com.appbank.model.generic;
+package co.com.appbank.usecase.generic;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.UUID;
 
-
 public abstract class Command implements Serializable {
-
     public final Instant when;
     private final String uuid;
 

@@ -1,8 +1,6 @@
 package co.com.appbank.model.generic;
 
-
 public abstract class Entity<I extends Identity> {
-
     private final I id;
 
     public Entity(I id){

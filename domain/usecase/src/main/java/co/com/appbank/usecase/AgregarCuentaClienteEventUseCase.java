@@ -1,22 +1,24 @@
 package co.com.appbank.usecase;
 
 
-import co.com.appbank.model.command.AgregarCuentaClienteCommand;
 import co.com.appbank.model.generic.DomainEvent;
-import co.com.appbank.model.generic.UseCaseForCommand;
+import co.com.appbank.usecase.command.AgregarCuentaClienteCommand;
+import co.com.appbank.usecase.gateways.DomainEventRepository;
+import co.com.appbank.usecase.gateways.EventBus;
+import co.com.appbank.usecase.generic.USeCaseForCommand;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public class AgregarCuentaClienteEventUseCase extends UseCaseForCommand<AgregarCuentaClienteCommand> {
+public class AgregarCuentaClienteEventUseCase extends USeCaseForCommand<AgregarCuentaClienteCommand> {
 
-//    private final DomainEventRepository repository;
-//
+    private final DomainEventRepository repository;
+
 //    private  final EventBus bus;
-//
-//    AgregarCuentaClienteEventUseCase(DomainEventRepository repository, EventBus bus){
-//        this.repository = repository;
-//        this.bus = bus;
-//    }
+
+    AgregarCuentaClienteEventUseCase(DomainEventRepository repository){
+        this.repository = repository;
+
+    }
 
     @Override
     public Flux<DomainEvent> apply(Mono<AgregarCuentaClienteCommand> agregarCuentaClienteCommandMono){

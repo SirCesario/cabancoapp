@@ -1,24 +1,20 @@
-package co.com.appbank.model.command;
+package co.com.appbank.usecase.command;
 
 
-import co.com.appbank.model.generic.Command;
-import co.com.appbank.model.values.ClienteId;
+import co.com.appbank.usecase.generic.Command;
 
-public class ActualizarClienteCommand extends Command {
+public class ClienteCreadoCommand extends Command {
 
-    private ClienteId clienteId;
+    private String clienteId;
     private String nombre;
     private String apellido;
     private String correo;
     private String telefono;
 
 
+    public ClienteCreadoCommand(){}
 
-    public ActualizarClienteCommand(){
-
-    }
-
-    public ActualizarClienteCommand(ClienteId clienteId, String nombre, String apellido, String correo, String telefono) {
+    public ClienteCreadoCommand(String clienteId, String nombre, String apellido, String correo, String telefono) {
         this.clienteId = clienteId;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -27,11 +23,11 @@ public class ActualizarClienteCommand extends Command {
 
     }
 
-    public ClienteId getClienteId() {
+    public String getClienteId() {
         return clienteId;
     }
 
-    public void setClienteId(ClienteId clienteId) {
+    public void setClienteId(String clienteId) {
         this.clienteId = clienteId;
     }
 

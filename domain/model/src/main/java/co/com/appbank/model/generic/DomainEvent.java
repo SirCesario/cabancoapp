@@ -1,12 +1,10 @@
 package co.com.appbank.model.generic;
+
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.Objects;
 import java.util.UUID;
 
-
-public abstract class DomainEvent implements Serializable {
-
+public class DomainEvent implements Serializable {
     public final Instant when;
     public final UUID uuid;
     public final String type;
@@ -39,10 +37,9 @@ public abstract class DomainEvent implements Serializable {
     }
 
     public void setAggregateRootId(String aggregateRootId) {
-        this.aggregateRootId = Objects.requireNonNull(aggregateRootId, "The aggregateRootId cannot be a value null");
+        System.out.println("Entra por aquí");
+        this.aggregateRootId = aggregateRootId;
     }
-
-
 
     public String getAggregateName() {
         return aggregate;

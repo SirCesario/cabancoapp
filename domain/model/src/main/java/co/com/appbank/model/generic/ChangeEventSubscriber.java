@@ -5,7 +5,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 
-
 public class ChangeEventSubscriber {
     private final List<DomainEvent> changes = new LinkedList<>();
     private final Map<String, AtomicLong> versions = new ConcurrentHashMap<>();
@@ -13,6 +12,7 @@ public class ChangeEventSubscriber {
 
 
     public List<DomainEvent> changes() {
+
         return changes;
     }
 
@@ -24,6 +24,7 @@ public class ChangeEventSubscriber {
 
 
     public final void subscribe(EventChange eventChange) {
+
         this.observables.addAll(eventChange.behaviors);
     }
 
@@ -55,5 +56,4 @@ public class ChangeEventSubscriber {
     public interface ChangeApply {
         void apply();
     }
-
 }

@@ -1,7 +1,7 @@
-package co.com.appbank.model.command;
+package co.com.appbank.usecase.command;
 
 
-import co.com.appbank.model.generic.Command;
+import co.com.appbank.usecase.generic.Command;
 
 public class QuitarCuentaClienteCommand extends Command {
 

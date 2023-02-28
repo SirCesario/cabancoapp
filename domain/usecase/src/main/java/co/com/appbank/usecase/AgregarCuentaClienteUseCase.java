@@ -2,15 +2,15 @@ package co.com.appbank.usecase;
 
 
 import co.com.appbank.model.Cliente;
-import co.com.appbank.model.command.AgregarCuentaClienteCommand;
-import co.com.appbank.usecase.gateways.EventBus;
 import co.com.appbank.model.generic.DomainEvent;
-import co.com.appbank.model.generic.UseCaseForCommand;
+import co.com.appbank.usecase.command.AgregarCuentaClienteCommand;
+import co.com.appbank.usecase.gateways.EventBus;
 import co.com.appbank.model.values.*;
+import co.com.appbank.usecase.generic.USeCaseForCommand;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public class AgregarCuentaClienteUseCase extends UseCaseForCommand<AgregarCuentaClienteCommand> {
+public class AgregarCuentaClienteUseCase extends USeCaseForCommand<AgregarCuentaClienteCommand> {
 
 //    private final DomainEventRepository repository;
 

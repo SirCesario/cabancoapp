@@ -1,5 +1,6 @@
 package co.com.appbank.config;
 
+
 import org.reactivecommons.utils.ObjectMapper;
 import org.reactivecommons.utils.ObjectMapperImp;
 import org.springframework.context.annotation.Bean;

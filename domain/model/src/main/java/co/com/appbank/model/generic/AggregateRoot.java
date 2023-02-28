@@ -3,12 +3,10 @@ package co.com.appbank.model.generic;
 import java.util.List;
 
 public abstract class AggregateRoot<I extends Identity> extends Entity<I> {
-
     private final ChangeEventSubscriber changeEventSubscriber;
-
     public AggregateRoot(I id) {
         super(id);
-        changeEventSubscriber = new ChangeEventSubscriber();
+        this.changeEventSubscriber = new ChangeEventSubscriber()    ;
     }
 
     protected ChangeEventSubscriber.ChangeApply appendChange(DomainEvent event) {
@@ -20,11 +18,12 @@ public abstract class AggregateRoot<I extends Identity> extends Entity<I> {
     }
 
     public List<DomainEvent> getUncommittedChanges() {
+
         return List.copyOf(changeEventSubscriber.changes());
     }
 
     protected final void subscribe(EventChange eventChange) {
-        changeEventSubscriber.subscribe(eventChange);
+        this.changeEventSubscriber.subscribe(eventChange);
     }
 
     public void markChangesAsCommitted() {
@@ -32,7 +31,7 @@ public abstract class AggregateRoot<I extends Identity> extends Entity<I> {
     }
 
     protected void applyEvent(DomainEvent domainEvent) {
+
         changeEventSubscriber.applyEvent(domainEvent);
     }
-
 }

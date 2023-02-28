@@ -1,4 +1,4 @@
-package co.com.appbank.model.generic;
+package co.com.appbank.usecase.gateways;
 
 
 import co.com.appbank.model.generic.DomainEvent;
@@ -7,5 +7,5 @@ import reactor.core.publisher.Mono;
 
 public interface DomainEventRepository {
     Flux<DomainEvent> findById(String aggregateId);
-    Mono<DomainEvent> saveEvent(DomainEvent event);
+    Mono<DomainEvent> saveEvent(DomainEvent event); //throws JSONSerilizationException;
 }
