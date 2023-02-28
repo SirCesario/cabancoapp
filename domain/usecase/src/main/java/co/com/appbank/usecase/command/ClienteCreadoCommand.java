@@ -10,16 +10,18 @@ public class ClienteCreadoCommand extends Command {
     private String apellido;
     private String correo;
     private String telefono;
+    private String cuentaId;
 
 
     public ClienteCreadoCommand(){}
 
-    public ClienteCreadoCommand(String clienteId, String nombre, String apellido, String correo, String telefono) {
+    public ClienteCreadoCommand(String clienteId, String nombre, String apellido, String correo, String telefono, String cuentaId) {
         this.clienteId = clienteId;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
+        this.cuentaId = cuentaId;
 
     }
 
@@ -63,5 +65,11 @@ public class ClienteCreadoCommand extends Command {
         this.telefono = telefono;
     }
 
+    public String getCuentaId() {
+        return cuentaId;
+    }
 
+    public void setCuentaId(String cuentaId) {
+        this.cuentaId = cuentaId;
+    }
 }

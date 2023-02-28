@@ -11,6 +11,7 @@ dependencies {
     implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:')
     //compile 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.3'
     implementation("org.reactivecommons.utils:object-mapper-api:0.1.0")
+    implementation project(path: ':serializer')
     //runtimeOnly("de.flapdoodle.embed:de.flapdoodle.embed.mongo") // TODO: remove this dependency to connect to real database
     testImplementation("org.reactivecommons.utils:object-mapper:0.1.0")
 }

@@ -7,44 +7,45 @@ import co.com.appbank.model.values.*;
 public class ClienteCreado extends DomainEvent {
 
 
-    private final ClienteId clienteId;
-    private final Nombre nombre;
-    private final Apellido apellido;
-    private final Correo correo;
-    private final Telefono telefono;
+    private  String nombre;
+    private  String apellido;
+    private  String correo;
+    private  String telefono;
+    private  String cuentaId;
+
+    public ClienteCreado(){
+        super("Cliente Creado");
+    }
 
 
 
-    public ClienteCreado(ClienteId clienteId, Nombre nombre, Apellido apellido, Correo correo, Telefono telefono) {
-        super(ClienteCreado.class.getName());
-        this.clienteId = clienteId;
+    public ClienteCreado(String nombre, String apellido, String correo, String telefono,String cuentaId) {
+        super("Cliente Creado");
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
+        this.cuentaId = cuentaId;
 
     }
 
-
-    public ClienteId getClienteId() {
-        return clienteId;
-    }
-
-    public Nombre getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public Apellido getApellido() {
+    public String getApellido() {
         return apellido;
     }
 
-    public Correo getCorreo() {
+    public String getCorreo() {
         return correo;
     }
 
-    public Telefono getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-
+    public String getCuentaId() {
+        return cuentaId;
+    }
 }

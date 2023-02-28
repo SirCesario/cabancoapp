@@ -4,6 +4,7 @@ package co.com.appbank.usecase;
 import co.com.appbank.model.Cliente;
 import co.com.appbank.model.generic.DomainEvent;
 import co.com.appbank.usecase.command.AgregarCuentaClienteCommand;
+import co.com.appbank.usecase.gateways.DomainEventRepository;
 import co.com.appbank.usecase.gateways.EventBus;
 import co.com.appbank.model.values.*;
 import co.com.appbank.usecase.generic.USeCaseForCommand;
@@ -12,30 +13,37 @@ import reactor.core.publisher.Mono;
 
 public class AgregarCuentaClienteUseCase extends USeCaseForCommand<AgregarCuentaClienteCommand> {
 
-//    private final DomainEventRepository repository;
+    private final DomainEventRepository repository;
 
     private EventBus bus;
 
 
-//    AgregarCuentaClienteUseCase(DomainEventRepository repository, EventBus bus){
-//        this.repository = repository;
-//        this.bus = bus;
-//    }
+    public AgregarCuentaClienteUseCase(DomainEventRepository repository, EventBus bus){
+        this.repository = repository;
+        this.bus = bus;
+    }
 
 
     @Override
     public Flux<DomainEvent> apply(Mono<AgregarCuentaClienteCommand> agregarCuentaClienteCommandMono){
 
-        return agregarCuentaClienteCommandMono.flatMapIterable(command -> {
-            Cliente cliente = new Cliente(ClienteId.of("7"),
-                    new Nombre("Laura"),
-                    new Apellido("Rodriguez"),
-                    new Correo("soporte12@gmail.com"),
-                    new Telefono("8010203"));
-            return cliente.getUncommittedChanges();
+        return agregarCuentaClienteCommandMono.flatMapMany(command -> repository.findById(command.getClienteId()).
+                collectList().flatMapIterable(events -> {
+                    Cliente cliente = Cliente.from(ClienteId.of(command.getClienteId()), events);
 
-        });
-//        flatMap(repository::saveEvent);
+                    cliente.agregarCuenta(CuentaId.of(command.getCuentaId()),
+                            new ClienteId(command.getClienteId()),
+                            new FechaCreacionCuenta(command.getFechaCreacionCuenta()),
+                            new TipoCuenta(command.getTipoCuenta()),
+                            new Saldo(command.getSaldo()));
+                    return cliente.getUncommittedChanges();
+                }).map(event ->{
+                    bus.publish(event);
+                    return event;
+                }).flatMap(event ->{
+                    return repository.saveEvent(event);
+                })
+            );
 
+        }
     }
-}

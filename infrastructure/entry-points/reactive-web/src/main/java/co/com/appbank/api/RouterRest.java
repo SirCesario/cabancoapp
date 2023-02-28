@@ -1,11 +1,12 @@
 package co.com.appbank.api;
 
 
-import co.com.appbank.api.userdto.ClienteCreadoDto;
-import co.com.appbank.model.events.ClienteCreado;
+
 import co.com.appbank.model.generic.DomainEvent;
-import co.com.appbank.usecase.command.ClienteCreadoCommand;
+import co.com.appbank.usecase.AgregarCuentaClienteUseCase;
 import co.com.appbank.usecase.ClienteCreadoUseCase;
+import co.com.appbank.usecase.command.AgregarCuentaClienteCommand;
+import co.com.appbank.usecase.command.ClienteCreadoCommand;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -21,17 +22,21 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class RouterRest {
     @Bean
-    public RouterFunction<ServerResponse> routerFunction(ClienteCreadoUseCase useCase) {
-                return route(POST("/api/usecase/cliente"), request -> {
-            return useCase
-                    .apply(request.bodyToMono(ClienteCreadoCommand.class))
-                    .collectList()
-                    .flatMap(event-> {
-                                ClienteCreadoDto eventoDTO = new ClienteCreadoDto((ClienteCreado) event.get(0));
-                                return ServerResponse.ok().bodyValue(eventoDTO);
-                            }
-                    );
-        });
+    public RouterFunction<ServerResponse> clienteCreado(ClienteCreadoUseCase useCase) {
+        return route(POST("/crear/cliente").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(useCase.apply(request.bodyToMono(ClienteCreadoCommand.class)),
+                                DomainEvent.class)));
+    }
+
+
+    @Bean
+    public RouterFunction<ServerResponse> agregarCuenta(AgregarCuentaClienteUseCase useCase){
+
+        return  route(POST("/agregar/cuenta").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(useCase.apply(request.bodyToMono(AgregarCuentaClienteCommand.class)),
+                                DomainEvent.class)));
     }
 }
 

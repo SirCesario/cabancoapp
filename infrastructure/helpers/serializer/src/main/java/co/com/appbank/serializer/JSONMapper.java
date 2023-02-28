@@ -1,4 +1,4 @@
-package co.com.appbank.mongo.generic.serializer;
+package co.com.appbank.serializer;
 
 public interface JSONMapper {
     String writeToJson(Object object);

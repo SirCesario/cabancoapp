@@ -1,7 +1,9 @@
 package co.com.appbank.events.data;
 
 
-import co.com.appbank.JSONMapperImpl;
+
+
+import co.com.appbank.serializer.JSONMapperImpl;
 
 import java.time.Instant;
 

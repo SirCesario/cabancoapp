@@ -1,16 +1,15 @@
-package co.com.appbank.mongo.generic.models;
-
+package co.com.appbank.mongo.data;
 
 
 
 import co.com.appbank.model.generic.DomainEvent;
-import co.com.appbank.mongo.generic.serializer.JSONMapper;
+import co.com.appbank.serializer.JSONMapper;
 
 import java.util.Date;
 
 public class StoredEvent {
-
     private String eventBody;
+    private String aggregateRootId;
     private Date occurredOn;
     private String typeName;
 
@@ -25,11 +24,8 @@ public class StoredEvent {
     }
 
 
-    public static StoredEvent wrapEvent(DomainEvent domainEvent, JSONMapper eventSerializer){
-        return new StoredEvent(domainEvent.getClass().getCanonicalName(),
-                new Date(),
-                eventSerializer.writeToJson(domainEvent)
-        );
+    public static String wrapEvent(DomainEvent domainEvent, JSONMapper eventSerializer){
+        return eventSerializer.writeToJson(domainEvent);
     }
 
 
@@ -60,6 +56,14 @@ public class StoredEvent {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public String getAggregateRootId() {
+        return aggregateRootId;
+    }
+
+    public void setAggregateRootId(String aggregateRootId) {
+        this.aggregateRootId = aggregateRootId;
     }
 
 

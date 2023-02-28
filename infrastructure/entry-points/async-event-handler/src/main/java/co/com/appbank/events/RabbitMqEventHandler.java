@@ -1,10 +1,13 @@
 package co.com.appbank.events;
 
 
-import co.com.appbank.JSONMapper;
-import co.com.appbank.JSONMapperImpl;
+
 import co.com.appbank.events.data.Notification;
 import co.com.appbank.model.events.ClienteCreado;
+import co.com.appbank.serializer.JSONMapper;
+import co.com.appbank.serializer.JSONMapperImpl;
+import co.com.appbank.usecase.AgregarCuentaClienteUseCase;
+
 import co.com.appbank.usecase.ClienteCreadoUseCase;
 import co.com.appbank.usecase.command.ClienteCreadoCommand;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -31,14 +34,14 @@ public class RabbitMqEventHandler {
     public void listener(String message) throws ClassNotFoundException {
         Notification notification = Notification.from(message);
         if(notification.getType()
-                .equals("co.com.alpha.bcb.model.post.events.PostCreated")){
+                .equals("co.com.appbank.model.events.ClienteCreado")){
             logger.info(notification.toString());
             this.useCase.apply(Mono
-                    .just((ClienteCreadoCommand) mapper.readFromJson(notification.getBody(),
-                            ClienteCreado.class)))
+                            .just((ClienteCreadoCommand) mapper.readFromJson(notification.getBody(),
+                                    ClienteCreado.class)))
                     .subscribe();
         }else{
-            logger.info("we currently don't have a listener for that event " +notification.toString());
+            logger.info("No se encontro ningun evento asociado " +notification.toString());
         }
     }
 }

@@ -2,9 +2,10 @@ package co.com.appbank.events;
 
 
 
-import co.com.appbank.JSONMapper;
+
 import co.com.appbank.events.data.Notification;
 import co.com.appbank.model.generic.DomainEvent;
+import co.com.appbank.serializer.JSONMapper;
 import co.com.appbank.usecase.gateways.EventBus;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;

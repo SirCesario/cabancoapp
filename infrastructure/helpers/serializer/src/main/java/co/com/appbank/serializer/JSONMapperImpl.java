@@ -1,4 +1,6 @@
-package co.com.appbank.mongo.generic.serializer;
+package co.com.appbank.serializer;
+
+
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -8,7 +10,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.util.logging.Logger;
-
 
 public class JSONMapperImpl implements JSONMapper {
 

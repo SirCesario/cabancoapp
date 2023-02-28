@@ -6,13 +6,17 @@ import co.com.appbank.model.values.*;
 
 public class CuentaAgregada extends DomainEvent {
 
-    private ClienteId clienteId;
-    private CuentaId cuentaId;
-    private FechaCreacionCuenta fechaCreacionCuenta;
-    private TipoCuenta tipoCuenta;
-    private Saldo saldo;
+    private String clienteId;
+    private String cuentaId;
+    private String fechaCreacionCuenta;
+    private String tipoCuenta;
+    private String saldo;
 
-    public CuentaAgregada(CuentaId cuentaId,ClienteId clienteId, FechaCreacionCuenta fechaCreacionCuenta, TipoCuenta tipoCuenta, Saldo saldo) {
+    public CuentaAgregada(){
+        super("Se agrego la cuenta");
+    }
+
+    public CuentaAgregada(String cuentaId, String clienteId, String fechaCreacionCuenta, String tipoCuenta, String saldo) {
         super("Cuenta Agregada con Exito");
         this.cuentaId = cuentaId;
         this.clienteId = clienteId;
@@ -21,23 +25,23 @@ public class CuentaAgregada extends DomainEvent {
         this.saldo = saldo;
     }
 
-    public ClienteId getClienteId() {
+    public String getClienteId() {
         return clienteId;
     }
 
-    public CuentaId getCuentaId() {
+    public String getCuentaId() {
         return cuentaId;
     }
 
-    public FechaCreacionCuenta getFechaCreacionCuenta() {
+    public String getFechaCreacionCuenta() {
         return fechaCreacionCuenta;
     }
 
-    public TipoCuenta getTipoCuenta() {
+    public String getTipoCuenta() {
         return tipoCuenta;
     }
 
-    public Saldo getSaldo() {
+    public String getSaldo() {
         return saldo;
     }
 }

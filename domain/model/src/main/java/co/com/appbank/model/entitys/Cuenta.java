@@ -16,7 +16,7 @@ public class Cuenta extends Entity<CuentaId> {
 
 
 
-    public Cuenta(CuentaId entityId,ClienteId clienteId, FechaCreacionCuenta fechaCreacionCuenta, TipoCuenta tipoCuenta, Saldo saldo, Set<Transaccion> transacciones){
+    public Cuenta(CuentaId entityId,ClienteId clienteId, FechaCreacionCuenta fechaCreacionCuenta, TipoCuenta tipoCuenta, Saldo saldo){
         super(entityId);
         this.clienteId = clienteId;
         this.fechaCreacionCuenta = fechaCreacionCuenta;

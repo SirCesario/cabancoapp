@@ -4,9 +4,9 @@ package co.com.appbank.model.values;
 import co.com.appbank.model.generic.Identity;
 
 public class ClienteId extends Identity {
-    public ClienteId(String clienteId){super(clienteId);}
+    public ClienteId(ClienteId uuid){super(String.valueOf(uuid));}
 
-    public ClienteId(){ }
+    public ClienteId(String uuid){ }
 
-    public static ClienteId of(String clienteId) { return new ClienteId(clienteId);}
+    public static ClienteId of(String uuid) { return new ClienteId(uuid);}
 }
