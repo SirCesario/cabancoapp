@@ -8,9 +8,10 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.stereotype.Component;
 
 import java.util.logging.Logger;
-
+@Component
 public class JSONMapperImpl implements JSONMapper {
 
     Logger logger = Logger.getLogger("Json-mapper-logger");

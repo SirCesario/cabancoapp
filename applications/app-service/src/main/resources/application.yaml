@@ -14,6 +14,11 @@ spring:
   data:
     mongodb:
       uri: "mongodb+srv://admindb:L4dIAnsdqSuqWxAz@cluster0.hrhqtf6.mongodb.net/DomainEvents?retryWrites=true&w=majority"
+      rabbitmq:
+        host: "localhost"
+        username: "guest"
+        password: "guest"
+        port: 5672
 management:
   endpoints:
     web:

@@ -23,7 +23,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouterRest {
     @Bean
     public RouterFunction<ServerResponse> clienteCreado(ClienteCreadoUseCase useCase) {
-        return route(POST("/crear/cliente").and(accept(MediaType.APPLICATION_JSON)),
+        return route(POST("/api/usecase/clientecreado").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(useCase.apply(request.bodyToMono(ClienteCreadoCommand.class)),
                                 DomainEvent.class)));
@@ -33,7 +33,7 @@ public class RouterRest {
     @Bean
     public RouterFunction<ServerResponse> agregarCuenta(AgregarCuentaClienteUseCase useCase){
 
-        return  route(POST("/agregar/cuenta").and(accept(MediaType.APPLICATION_JSON)),
+        return  route(POST("/api/usecase/agregarcuenta").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(useCase.apply(request.bodyToMono(AgregarCuentaClienteCommand.class)),
                                 DomainEvent.class)));
