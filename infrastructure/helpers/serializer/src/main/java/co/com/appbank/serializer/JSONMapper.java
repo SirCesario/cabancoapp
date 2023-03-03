@@ -1,6 +1,6 @@
 package co.com.appbank.serializer;
 
-import org.springframework.stereotype.Component;
+
 
 
 public interface JSONMapper {

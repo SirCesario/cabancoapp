@@ -6,7 +6,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'bancoApp'
+rootProject.name = 'appbank'
 
 include ':app-service'
 include ':model'

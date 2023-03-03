@@ -1,8 +1,9 @@
 package co.com.appbank.config;
 
 
-import org.reactivecommons.utils.ObjectMapper;
-import org.reactivecommons.utils.ObjectMapperImp;
+import co.com.appbank.serializer.JSONMapper;
+import co.com.appbank.serializer.JSONMapperImpl;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,8 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class ObjectMapperConfig {
 
     @Bean
-    public ObjectMapper objectMapper() {
-        return new ObjectMapperImp();
+    public JSONMapper jsonMapper(){
+        return new JSONMapperImpl();
     }
-
 }

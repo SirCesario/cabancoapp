@@ -37,7 +37,7 @@ public class DomainEvent implements Serializable {
     }
 
     public void setAggregateRootId(String aggregateRootId) {
-        System.out.println("CONSUMO CORRECTO PARA LA PRUEBA CON SANTIAGO");
+        System.out.println("Consumo Correcto Julio Cesar =) ");
         this.aggregateRootId = aggregateRootId;
     }
 

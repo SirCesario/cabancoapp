@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: "bancoapp"
+    name: "appbank"
   devtools:
     add-properties: false
   h2:
@@ -13,12 +13,13 @@ spring:
     include: null
   data:
     mongodb:
-      uri: "mongodb+srv://admindb:L4dIAnsdqSuqWxAz@cluster0.hrhqtf6.mongodb.net/DomainEvents?retryWrites=true&w=majority"
-      rabbitmq:
+      uri: "mongodb+srv://admindb:L4dIAnsdqSuqWxAz@cluster0.hrhqtf6.mongodb.net/test"
+rabbitmq:
         host: "localhost"
         username: "guest"
         password: "guest"
-        port: 5672
+        virtual_host:
+        port: 15672
 management:
   endpoints:
     web:

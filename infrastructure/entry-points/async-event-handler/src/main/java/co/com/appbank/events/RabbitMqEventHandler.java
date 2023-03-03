@@ -34,12 +34,11 @@ public class RabbitMqEventHandler {
     public void listener(String message) throws ClassNotFoundException {
         Notification notification = Notification.from(message);
         if(notification.getType()
-                .equals("co.com.appbank.model.events.ClienteCreado")){
+                .equals("co.com.appbank.model.cliente.events.ClienteCreado")){
             logger.info(notification.toString());
             this.useCase.apply(Mono
                             .just((ClienteCreadoCommand) mapper.readFromJson(notification.getBody(),
-                                    ClienteCreado.class)))
-                    .subscribe();
+                                    ClienteCreadoCommand.class))).subscribe();
         }else{
             logger.info("No se encontro ningun evento asociado " +notification.toString());
         }
